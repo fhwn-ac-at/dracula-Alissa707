@@ -40,4 +40,7 @@ void apply_move(GameState *state, const Board *board, int die_result, bool must_
     state->steps++;
 }
 
+bool has_won(const GameState *state, const Board *board) {
+    return state && board && (state->position == board->size - 1);
+}
 
