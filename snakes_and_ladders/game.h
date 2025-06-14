@@ -18,4 +18,6 @@ GameState init_game();
 
 int roll_die(int sides);
 
+void apply_move(GameState *state, const Board *board, int die_result, bool must_land_exactly);
+
 #endif // GAME_H
