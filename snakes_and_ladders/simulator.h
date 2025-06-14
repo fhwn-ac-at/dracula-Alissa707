@@ -9,7 +9,7 @@
 #include "game.h"
 #include <stdbool.h>
 
-void run_simulations(const Board *board, int num_simulations, int die_sides, bool must_land_exactly);
+void run_simulations(const Board *board, int num_simulations, int die_sides, bool must_land_exactly, int max_rolls);
 
 #endif // SIMULATOR_H
 

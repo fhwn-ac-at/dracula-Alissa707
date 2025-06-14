@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_ROLLS 1000
 #define MAX_TRANSITIONS 1000
 
 typedef struct {
@@ -27,20 +26,20 @@ static void track_usage(TransitionUsage *usage, int *count, int square) {
     (*count)++;
 }
 
-void run_simulations(const Board *board, int num_simulations, int die_sides, bool must_land_exactly) {
+void run_simulations(const Board *board, int num_simulations, int die_sides, bool must_land_exactly, int max_rolls) {
     int total_rolls = 0;
-    int shortest_win = MAX_ROLLS;
-    int shortest_sequence[MAX_ROLLS];
+    int shortest_win = max_rolls;
+    int shortest_sequence[max_rolls];
     int snake_usage_count = 0, ladder_usage_count = 0;
     TransitionUsage snake_usage[MAX_TRANSITIONS] = {0};
     TransitionUsage ladder_usage[MAX_TRANSITIONS] = {0};
 
     for (int sim = 0; sim < num_simulations; ++sim) {
         GameState state = init_game();
-        int rolls[MAX_ROLLS];
+        int rolls[max_rolls];
         int roll_count = 0;
 
-        while (!has_won(&state, board) && roll_count < MAX_ROLLS) {
+        while (!has_won(&state, board) && roll_count < max_rolls) {
             int roll = roll_die(die_sides);
             int prev = state.position;
             apply_move(&state, board, roll, must_land_exactly);
