@@ -66,3 +66,28 @@ void run_simulations(const Board *board, int num_simulations, int die_sides, boo
             }
         }
     }
+
+    // Output summary
+    printf("\n=== Simulation Summary ===\n");
+    printf("Average rolls to win:        %.2f\n", (double)total_rolls / num_simulations);
+    printf("Shortest win in %d rolls:    ", shortest_win);
+    for (int i = 0; i < shortest_win; ++i) {
+        printf("%d ", shortest_sequence[i]);
+    }
+    printf("\n\n");
+
+    printf("--- Snake Usage ---\n");
+    for (int i = 0; i < snake_usage_count; ++i) {
+        printf("Snake at %d used %d times\n",
+               snake_usage[i].square + 1, snake_usage[i].count);
+    }
+
+    printf("\n--- Ladder Usage ---\n");
+    for (int i = 0; i < ladder_usage_count; ++i) {
+        printf("Ladder at %d used %d times\n",
+               ladder_usage[i].square + 1, ladder_usage[i].count);
+    }
+
+    printf("\n");
+}
+
